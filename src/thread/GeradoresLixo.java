@@ -24,15 +24,15 @@ public class GeradoresLixo extends Thread {
 			// sortear tipo
 			TipoResiduo tipo = sortearTipo();
 
-			//criar resíduo
+			// criar resíduo
 			Residuo r = new Residuo(tipo);
 
-			//adicionar na fila 
+			// adicionar na fila
 			synchronized (fila) {
-			fila.add(r);
+				fila.add(r);
+				fila.notify();
 			}
 
-		
 			Contadores.incrementar(tipo);
 
 			// simula tempo de produção
@@ -46,6 +46,6 @@ public class GeradoresLixo extends Thread {
 
 	private TipoResiduo sortearTipo() {
 		TipoResiduo[] tipos = TipoResiduo.values();
-	    return tipos[random.nextInt(tipos.length)];
+		return tipos[random.nextInt(tipos.length)];
 	}
 }

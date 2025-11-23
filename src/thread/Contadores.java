@@ -11,7 +11,7 @@ public class Contadores {
 
     public static synchronized void incrementar(TipoResiduo tipo) {
 
-        switch(tipo) {
+        switch (tipo) {
             case PAPEL:
                 papel++;
                 break;
